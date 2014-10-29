@@ -76,7 +76,7 @@ function checkVictory(level){
 		return true;
 }
 
-function getPusherX(){
+function getPusherX(level){
 	for (i = 0; i < level.length; i++){
 		for (j = 0; j < level[i].length; j++){
 			if (level[i][j] == tileType.BOX)
@@ -85,7 +85,7 @@ function getPusherX(){
 	}
 }
 
-function getPusherY(){
+function getPusherY(level){
 	for (i = 0; i < level.length; i++){
 		for (j = 0; j < level[i].length; j++){
 			if (level[i][j] == tileType.PUSHER)
@@ -94,24 +94,12 @@ function getPusherY(){
 	}
 }
 
+
+
+
 drawLevel(unLevel);
 
-document.addEventListener('keydown', function(event) {
-    if (event.keyCode == 37) {
-        moveLeft();
-		drawLevel(unLevel);
-		if(checkVictory()){
-			alert("Winner!");
-}
-
-    }
-    else if (event.keyCode == 39) {
-        moveLeft();
-		drawLevel(unLevel);
-		if(checkVictory()){
-			alert("Winner!");
-    }
-}, true);
+alert("pusher is at position : (" + getPusherX(unLevel) +","+ getPusherY(unLevel) +")");
 
 </script> 
 
