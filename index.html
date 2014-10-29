@@ -2,9 +2,71 @@
 <html>
 <body>
 
-<h1>Philippe Sasseville</h1>
+<canvas id="myCanvas" width="1000" height="1000"></canvas> 
 
-<p>Bienvenue sur mon site personnel</p>
+<script>
+var tileType = {WALL : 0, PUSHER : 1, GOALSQUARE : 2, BOX : 3, FLOOR : 4, PUSHERONGOALSQUARE : 5, BOXONGOALSQUARE : 6, EMPTY : 7};
+var tileDimension = {WIDTH : 50, HEIGHT : 50};
+
+function clearScreen(){
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillRect(0,0,1000,1000);
+}
+
+function drawElem(type, posX, posY){
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	switch(type) {
+	    case tileType.WALL:
+		ctx.fillStyle = "#000000";
+		break;
+	    case tileType.PUSHER:
+		ctx.fillStyle = "#00FF00";
+		break;
+	    case tileType.GOALSQUARE:
+		ctx.fillStyle = "#FFFF66";
+		break;
+	    case tileType.BOX:
+		ctx.fillStyle = "#663300";
+		break;
+	    case tileType.FLOOR:
+		ctx.fillStyle = "#CC9900";
+		break;
+	    case tileType.PUSHERONGOALSQUARE:
+		ctx.fillStyle = "#00FF00";
+		break;
+	    case tileType.BOXONGOALSQUARE:
+		ctx.fillStyle = "#663300";
+		break;
+	    case tileType.EMPTY:
+		ctx.fillStyle = "#FFFFFF";
+		break;
+	    default:
+		break;
+	}
+	ctx.fillRect(posX*tileDimension.WIDTH,posY*tileDimension.HEIGHT,tileDimension.WIDTH,tileDimension.HEIGHT);
+}
+
+var unLevel = 	[[tileType.WALL,tileType.WALL,tileType.WALL,tileType.WALL]
+		,[tileType.WALL,tileType.FLOOR,tileType.FLOOR,tileType.WALL]
+		,[tileType.WALL,tileType.FLOOR,tileType.FLOOR,tileType.WALL]
+		,[tileType.WALL,tileType.WALL,tileType.WALL,tileType.WALL]];
+
+var levelEnString = "7#|#.@-#-#|#$*-$-#|#3-$-#|#-..--#|#--*--#|7#";
+
+function drawLevel(level){
+	for (i = 0; i < 4; i++){
+		for (j = 0; j < 4; j++){
+			drawElem(level[i][j], i, j);
+		}
+	}
+}
+
+drawLevel(unLevel);
+
+</script> 
 
 </body>
 </html>
