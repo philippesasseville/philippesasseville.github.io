@@ -102,7 +102,19 @@ function getPusherY(level){
 	}
 }
 
-var level = unLevel;
+function copyLevel(source){
+	var level = [];
+	for (i = 0; i < source.length; i++){
+		level[i]= [];
+		for (j = 0; j < source[i].length; j++){
+			level[i][j] = source[i][j];
+		}
+	}
+	return level;
+}
+
+var level = copyLevel(unLevel);
+
 var x = getPusherX(level);
 var y = getPusherY(level);
 var moves = 0;
@@ -110,6 +122,16 @@ var winner = checkVictory(level,moves);
 
 //breaks encapsulation see unLevel
 function doKeyDown(e){
+	if (e.keyCode == 82){
+		level = null;
+		level = copyLevel(unLevel);
+		x = getPusherX(level);
+		y = getPusherY(level);
+		moves = 0;
+		winner = false;
+		clearScreen(level);
+		drawLevel(level);
+	}
 	if (!winner){
 		switch(e.keyCode) {
 			case 37:
@@ -178,7 +200,7 @@ function doKeyDown(e){
 						moves+=1;
 					}
 				}
-				clearScreen(level);
+				clearScreen();
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
@@ -248,7 +270,7 @@ function doKeyDown(e){
 						moves+=1;
 					}
 				}
-				clearScreen(level);
+				clearScreen();
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
@@ -317,7 +339,7 @@ function doKeyDown(e){
 						moves+=1;
 					}
 				}
-				clearScreen(level);
+				clearScreen();
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
@@ -387,7 +409,7 @@ function doKeyDown(e){
 						moves+=1;
 					}
 				}
-				clearScreen(level);
+				clearScreen();
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
