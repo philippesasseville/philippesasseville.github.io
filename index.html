@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<p>Keyboard arrows to move.</p>
+<p>Keyboard WASD to move.</p>
 
 <canvas id="myCanvas" width="1000" height="1000"></canvas>
 
@@ -134,7 +134,7 @@ function doKeyDown(e){
 	}
 	if (!winner){
 		switch(e.keyCode) {
-			case 37:
+			case 65:
 				// left key pressed
 				if (level[x][y] == tileType.PUSHER){
 					if (level[x-1][y] == tileType.FLOOR){
@@ -204,7 +204,7 @@ function doKeyDown(e){
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
-			case 38:
+			case 87:
 				// up key pressed
 				if (level[x][y] == tileType.PUSHER){
 					if (level[x][y-1] == tileType.FLOOR){
@@ -274,7 +274,7 @@ function doKeyDown(e){
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
-			case 39:
+			case 68:
 				// right key pressed
 				if (level[x][y] == tileType.PUSHER){
 					if (level[x+1][y] == tileType.FLOOR){
@@ -343,7 +343,7 @@ function doKeyDown(e){
 				drawLevel(level);
 				winner = checkVictory(level,moves);
 				break;
-			case 40:
+			case 83:
 				// down key pressed
 				if (level[x][y] == tileType.PUSHER){
 					if (level[x][y+1] == tileType.FLOOR){
